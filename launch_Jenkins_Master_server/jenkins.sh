@@ -20,4 +20,3 @@ echo "-------------"
 mvn --version
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
-ssh-keygen -t rsa -N "" -f /home/ec2-user/.ssh/id_rsa
