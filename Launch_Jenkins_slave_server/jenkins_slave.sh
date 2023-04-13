@@ -17,5 +17,3 @@ sudo mv apache-maven-3.9.1 maven39
 sudo rm -rf apache-maven-3.9.1-bin.tar.gz
 sed -i '10d' /home/slave/.bash_profile
 sed -i '8 aJAVA_HOME=/usr/lib/jvm/jre-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64\n\nM2_HOME=/opt/maven/maven39\n\nPATH=$HOME/.local/bin:$HOME/bin:$JAVA_HOME:$M2_HOME/bin:$PATH' /home/slave/.bash_profile
-sudo -u slave mkdir /home/slave/.ssh
-sudo -u slave touch /home/slave/.ssh/authorized_keys
