@@ -70,8 +70,7 @@ resource "null_resource" "slaves" {
   provisioner "remote-exec" {
     inline = [
       "chmod 700 /home/ec2-user/jenkins_slaves.sh",
-      "bash -x /home/ec2-user/jenkins_slaves.sh",
-      "sudo systemctl restart jenkins"
+      "bash -x /home/ec2-user/jenkins_slaves.sh"
     ]
     on_failure = continue
   }
