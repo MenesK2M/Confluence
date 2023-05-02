@@ -1,2 +1,2 @@
-# Set-up-Jenkins-Master-and-Two-Slaves
+# Lab
 repository for my confluence
