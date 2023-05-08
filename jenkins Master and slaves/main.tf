@@ -2,7 +2,7 @@ resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.amz-ami-jenkins.id
   instance_type = var.instance_type
   key_name      = var.key_name_linux
-  count         = 4
+  count         = 2
   tags = {
     "Name" = "Jenkins_server-${count.index + 1}"
   }
@@ -35,10 +35,10 @@ resource "null_resource" "master" {
 
   provisioner "remote-exec" {
     inline = [
-      "mkdir /home/ec2-user/test",
-      "touch /home/ec2-user/jenkins",
       "chmod 700 /home/ec2-user/jenkins_master.sh",
-      "bash -x /home/ec2-user/jenkins_master.sh"
+      "bash -x /home/ec2-user/jenkins_master.sh",
+      "sleep 120",
+      "sudo systemctl enable --now jenkins"
     ]
 
     on_failure = continue
@@ -70,7 +70,7 @@ resource "null_resource" "slaves" {
   provisioner "remote-exec" {
     inline = [
       "chmod 700 /home/ec2-user/jenkins_slaves.sh",
-      "bash -x /home/ec2-user/jenkins_slaves.sh"
+      "bash -x /home/ec2-user/jenkins_slaves.sh",
     ]
     on_failure = continue
   }
